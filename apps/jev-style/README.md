@@ -52,7 +52,7 @@ Grenzen: Eingabe bis 25'600 Tokens, Frage und Optionen bis 2'048 Tokens, höchst
 JEV_URL=http://<ct-ip>:8000 JEV_API_TOKEN=<token> python apps/jev-style/eval/evaluate.py
 ```
 
-Misst Trefferquote, Latenz und Kalibrierung gegen 40 deutsche Homelab-Meldungen (`eval/testset-homelab-de.jsonl`).
+Misst Trefferquote, Latenz und Kalibrierung gegen 40 deutsche Homelab-Meldungen (`eval/testset-homelab-de.jsonl`), standardmässig in vier Frage-Varianten (`--variant de-frage|de-aussage|de-choice|en-choice|all`).
 
 Unit-Tests für den Server (ohne Modell): `pip install fastapi httpx pytest && pytest apps/jev-style/tests`
 

@@ -189,9 +189,15 @@ mkdir -p "$BASE" /etc/jev-style
 # shellcheck disable=SC2086  # Paketliste bewusst per Word-Splitting
 "$BASE/venv/bin/pip" install $PY_PACKAGES
 
-# Modell: nur Q8_0 plus Runtime-Dateien, nicht F16/Q4; fester Commit statt main
-"$BASE/venv/bin/hf" download "$MODEL_REPO" --revision "$MODEL_REVISION" --local-dir "$BASE/model" \
-  --include "$QUANT_FILE" "*.py" "*.json" "*.sh" "*.cpp" "tokenizer/*" requirements.txt LICENSE NOTICE
+# Modell: nur Q8_0 plus Runtime-Dateien, nicht F16/Q4; fester Commit statt main.
+# Pro Muster ein eigenes --include: weitere Werte nach dem ersten wertet hf als Dateinamen
+# und ignoriert das Include dann komplett (GGUF fehlte so).
+set --
+for pattern in "$QUANT_FILE" "*.py" "*.json" "*.sh" "*.cpp" "tokenizer/*" requirements.txt LICENSE NOTICE; do
+  set -- "$@" --include "$pattern"
+done
+"$BASE/venv/bin/hf" download "$MODEL_REPO" --revision "$MODEL_REVISION" --local-dir "$BASE/model" "$@"
+[ -s "$BASE/model/$QUANT_FILE" ] || { echo "$QUANT_FILE fehlt nach dem Download" >&2; exit 1; }
 
 # llama.cpp auf dem getesteten Commit, dann den Scorer bauen (CPU)
 if [ ! -d "$BASE/llama.cpp/.git" ]; then

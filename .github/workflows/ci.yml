@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generierte Scripts aktuell
+        run: |
+          for b in apps/*/build.sh; do sh "$b" --check; done
+
+      - name: ShellCheck
+        run: |
+          sudo apt-get install -y shellcheck >/dev/null
+          shellcheck -S warning ct/*.sh apps/*/src/*.sh apps/*/build.sh
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tests
+        run: |
+          pip install fastapi httpx pytest
+          pytest -q apps/*/tests
+
+      - name: Secret-Scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

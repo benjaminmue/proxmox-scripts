@@ -1,0 +1,24 @@
+[Unit]
+Description=Jev-Style System One API (TypeSafe-kompatibel)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=jevstyle
+Group=jevstyle
+WorkingDirectory=/opt/jev-style
+Environment=JEV_MODEL_DIR=/opt/jev-style/model
+Environment=JEV_QUANT=Q8_0
+Environment=JEV_TOKEN_FILE=/etc/jev-style/token
+ExecStart=/opt/jev-style/venv/bin/uvicorn server:app --host 0.0.0.0 --port 8000 --workers 1
+Restart=on-failure
+RestartSec=5
+MemoryMax=5G
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadOnlyPaths=/opt/jev-style /etc/jev-style
+
+[Install]
+WantedBy=multi-user.target

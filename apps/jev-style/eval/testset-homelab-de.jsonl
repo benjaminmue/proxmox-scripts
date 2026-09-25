@@ -1,0 +1,40 @@
+{"id": 1, "state": "Unraid Tower: Parity-Check abgeschlossen, 0 Fehler, Dauer 21 h 14 min.", "gold": {"handeln": false, "schwere": 0, "kategorie": "storage"}}
+{"id": 2, "state": "Unraid Tower: Disk 4 (ST18000NM) meldet 48 Reallocated Sectors, SMART-Status FAILING_NOW.", "gold": {"handeln": true, "schwere": 2, "kategorie": "storage"}}
+{"id": 3, "state": "Unraid: Array ist gestoppt, Disk 2 fehlt (missing). Docker-Dienst nicht verfügbar.", "gold": {"handeln": true, "schwere": 3, "kategorie": "storage"}}
+{"id": 4, "state": "Cache-Pool NVMe btrfs RAID1 zu 17 Prozent belegt.", "gold": {"handeln": false, "schwere": 0, "kategorie": "storage"}}
+{"id": 5, "state": "Cache-Pool zu 96 Prozent voll, Mover läuft erst heute Nacht um 03:40.", "gold": {"handeln": true, "schwere": 1, "kategorie": "storage"}}
+{"id": 6, "state": "Container webapp: Status unhealthy seit 3 Stunden, Healthcheck HTTP 502.", "gold": {"handeln": true, "schwere": 2, "kategorie": "container"}}
+{"id": 7, "state": "Container sonarr wurde auf Version 4.0.15 aktualisiert und neu gestartet, läuft.", "gold": {"handeln": false, "schwere": 0, "kategorie": "update"}}
+{"id": 8, "state": "Container immich-server im Restart-Loop, Exit Code 137 (OOM killed), 14 Neustarts in 10 Minuten.", "gold": {"handeln": true, "schwere": 2, "kategorie": "container"}}
+{"id": 9, "state": "Container timetracker gestoppt (Exit 0) nach manuellem docker stop durch root.", "gold": {"handeln": false, "schwere": 0, "kategorie": "container"}}
+{"id": 10, "state": "Docker-Dienst startet nicht: failed to create network br-media, macvlan parent eth1.20 fehlt.", "gold": {"handeln": true, "schwere": 3, "kategorie": "netzwerk"}}
+{"id": 11, "state": "UniFi: WAN 1 offline, Failover auf Internet 2 aktiv, Durchsatz reduziert.", "gold": {"handeln": true, "schwere": 2, "kategorie": "netzwerk"}}
+{"id": 12, "state": "UniFi: Beide WAN-Verbindungen down, kein Internetzugang seit 12 Minuten.", "gold": {"handeln": true, "schwere": 3, "kategorie": "netzwerk"}}
+{"id": 13, "state": "UniFi: Access Point U6-LR hat Firmware 6.7.31 installiert und ist wieder online.", "gold": {"handeln": false, "schwere": 0, "kategorie": "update"}}
+{"id": 14, "state": "UniFi: Switch Entrance Port 3 Link Down, PVE2 nicht mehr erreichbar.", "gold": {"handeln": true, "schwere": 2, "kategorie": "netzwerk"}}
+{"id": 15, "state": "UniFi: Neuer Client im Guest-VLAN verbunden (iPhone von Gast).", "gold": {"handeln": false, "schwere": 0, "kategorie": "netzwerk"}}
+{"id": 16, "state": "NetAlertX: Unbekanntes Gerät mit MAC 8a:3f:11:22:9c:01 im VLAN 10 (Management) aufgetaucht.", "gold": {"handeln": true, "schwere": 2, "kategorie": "sicherheit"}}
+{"id": 17, "state": "NetAlertX: Gerät Drucker-Büro wieder online nach 2 Stunden Standby.", "gold": {"handeln": false, "schwere": 0, "kategorie": "netzwerk"}}
+{"id": 18, "state": "SSH: 1'240 fehlgeschlagene Root-Logins von 45.155.x.x auf Tower innerhalb von 5 Minuten.", "gold": {"handeln": true, "schwere": 2, "kategorie": "sicherheit"}}
+{"id": 19, "state": "Keycloak: Benutzer admin hat sich erfolgreich über Entra ID angemeldet.", "gold": {"handeln": false, "schwere": 0, "kategorie": "sicherheit"}}
+{"id": 20, "state": "Cloudflare WAF hat 32 Requests auf /wp-login.php von einer Bot-IP blockiert.", "gold": {"handeln": false, "schwere": 0, "kategorie": "sicherheit"}}
+{"id": 21, "state": "GitHub: Secret Scanning hat einen gültigen API-Key im Repo homelab-tools gefunden (öffentlich).", "gold": {"handeln": true, "schwere": 3, "kategorie": "sicherheit"}}
+{"id": 22, "state": "Nginx Proxy Manager: Zertifikat für cloud.example.com läuft in 5 Tagen ab, Erneuerung fehlgeschlagen (DNS challenge timeout).", "gold": {"handeln": true, "schwere": 1, "kategorie": "zertifikat"}}
+{"id": 23, "state": "Nginx Proxy Manager: Zertifikat für photos.example.com erfolgreich erneuert, gültig bis 24.12.2026.", "gold": {"handeln": false, "schwere": 0, "kategorie": "zertifikat"}}
+{"id": 24, "state": "Browser meldet NET::ERR_CERT_DATE_INVALID für ntfy.example.com, Push-Zustellung schlägt fehl.", "gold": {"handeln": true, "schwere": 2, "kategorie": "zertifikat"}}
+{"id": 25, "state": "Duplicati: Backup-Job Appdata erfolgreich, 3.2 GB übertragen, Dauer 18 min.", "gold": {"handeln": false, "schwere": 0, "kategorie": "backup"}}
+{"id": 26, "state": "Duplicati: Backup-Job Appdata seit 4 Tagen fehlgeschlagen: Ziel nicht erreichbar (nas01).", "gold": {"handeln": true, "schwere": 2, "kategorie": "backup"}}
+{"id": 27, "state": "Proxmox Backup: vzdump für VM 110 mit Warnungen beendet, 1 Datei konnte nicht gelesen werden.", "gold": {"handeln": true, "schwere": 1, "kategorie": "backup"}}
+{"id": 28, "state": "Proxmox Backup: alle 6 Gäste erfolgreich gesichert, Verify OK.", "gold": {"handeln": false, "schwere": 0, "kategorie": "backup"}}
+{"id": 29, "state": "USV: Stromausfall, Batteriebetrieb seit 6 Minuten, Restlaufzeit 11 Minuten.", "gold": {"handeln": true, "schwere": 3, "kategorie": "strom"}}
+{"id": 30, "state": "USV: Netzspannung wiederhergestellt, Batterie lädt, Ladestand 64 Prozent.", "gold": {"handeln": false, "schwere": 0, "kategorie": "strom"}}
+{"id": 31, "state": "USV: Selbsttest fehlgeschlagen, Batterie muss ersetzt werden.", "gold": {"handeln": true, "schwere": 1, "kategorie": "strom"}}
+{"id": 32, "state": "Unraid: Update 7.2.3 verfügbar (Security-Fixes für Kernel und Samba).", "gold": {"handeln": true, "schwere": 1, "kategorie": "update"}}
+{"id": 33, "state": "Watchtower: 5 Container-Images aktualisiert, alle Container laufen wieder.", "gold": {"handeln": false, "schwere": 0, "kategorie": "update"}}
+{"id": 34, "state": "Proxmox PVE1: 3 Pakete aktualisierbar (pve-manager, proxmox-kernel, qemu-server).", "gold": {"handeln": false, "schwere": 0, "kategorie": "update"}}
+{"id": 35, "state": "Proxmox PVE3: Node nicht erreichbar, Cluster hat Quorum verloren, HA-Gäste gestoppt.", "gold": {"handeln": true, "schwere": 3, "kategorie": "netzwerk"}}
+{"id": 36, "state": "Tailscale: Gerät nginx seit 5 Monaten offline, Key läuft nicht ab.", "gold": {"handeln": false, "schwere": 1, "kategorie": "sicherheit"}}
+{"id": 37, "state": "Tailscale: API-Key automation läuft in 3 Tagen ab.", "gold": {"handeln": true, "schwere": 1, "kategorie": "zertifikat"}}
+{"id": 38, "state": "GitHub Actions: Workflow build im Repo webapp fehlgeschlagen (Tests rot, 2 von 212).", "gold": {"handeln": true, "schwere": 1, "kategorie": "update"}}
+{"id": 39, "state": "GitHub: Release v0.4.1 von sync-tool veröffentlicht, Image auf GHCR.", "gold": {"handeln": false, "schwere": 0, "kategorie": "update"}}
+{"id": 40, "state": "Unraid: CPU-Temperatur 97 Grad, Lüfter-Drehzahl 0 RPM, Drosselung aktiv.", "gold": {"handeln": true, "schwere": 3, "kategorie": "strom"}}

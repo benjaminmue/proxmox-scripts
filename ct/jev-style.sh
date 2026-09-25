@@ -104,9 +104,12 @@ confirm() {
 create_ct() {
   msg_info "Debian-13-Template prüfen"
   pveam update >/dev/null
-  local template
-  template=$(pveam available --section system | awk '{print $2}' | grep '^debian-13-standard' | sort -V | tail -n 1)
-  [ -n "$template" ] || msg_error "Kein debian-13-standard Template verfügbar"
+  # Architektur der Node, sonst wählt sort -V das arm64-Template (arm64 > amd64)
+  local arch template
+  arch=$(dpkg --print-architecture)
+  template=$(pveam available --section system | awk '{print $2}' \
+    | grep "^debian-13-standard_.*_${arch}\.tar" | sort -V | tail -n 1)
+  [ -n "$template" ] || msg_error "Kein debian-13-standard Template für $arch verfügbar"
   pveam list "$TSTORAGE" | grep -q "$template" || pveam download "$TSTORAGE" "$template" >/dev/null
   msg_ok "Template $template"
 
@@ -114,13 +117,15 @@ create_ct() {
   [ -n "$VLAN" ] && net="$net,tag=$VLAN"
 
   msg_info "Container $CTID anlegen"
+  pct status "$CTID" >/dev/null 2>&1 && msg_error "CTID $CTID ist bereits vergeben"
   pct create "$CTID" "$TSTORAGE:vztmpl/$template" \
     --hostname "$HN" --cores "$CORES" --memory "$RAM" --swap "$SWAP" \
     --rootfs "$STORAGE:$DISK" --net0 "$net" \
     --unprivileged 1 --features nesting=1 --onboot 1 --tags "$TAGS" \
     --description "Jev-Style-0.8B-Decision-v3, TypeSafe-kompatible API auf Port 8000. Token: /etc/jev-style/token" \
-    >/dev/null
-  pct start "$CTID"
+    >/dev/null || msg_error "pct create fehlgeschlagen"
+  pct start "$CTID" \
+    || msg_error "Container $CTID startet nicht. Details: pct start $CTID --debug; entfernen: pct destroy $CTID"
   msg_ok "Container $CTID gestartet"
 
   msg_info "Warte auf Netzwerk im Container"

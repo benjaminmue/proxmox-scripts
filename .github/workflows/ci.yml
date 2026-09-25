@@ -35,6 +35,10 @@ jobs:
           pytest -q apps/*/tests
 
       - name: Secret-Scan
-        uses: gitleaks/gitleaks-action@v2
+        # CLI statt gitleaks-action: die Action scheitert beim ersten Commit (kein Parent) und scannt dann nichts
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_VERSION: "8.24.3"
+        run: |
+          curl -fsSL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            | tar -xz -C /tmp gitleaks
+          /tmp/gitleaks git --redact --verbose --exit-code 1 .
